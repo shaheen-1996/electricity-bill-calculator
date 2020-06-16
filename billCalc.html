@@ -12,50 +12,56 @@
             <tr>
                 <td>Previous Reading</td>
                 <td>:</td>
-                <td><input type="text" id="pRead"></td>
+                <td><input onkeyup="updateUnits()" type="number" id="pRead"></td>
                 <td></td>
             </tr>
             <tr>
                 <td>New Reading</td>
                 <td>:</td>
-                <td><input type="text" id="nRead"></td>
+                <td><input onkeyup="updateUnits()" type="number" id="nRead"></td>
                 <td></td>
             </tr>
             <tr>
                 <td>Units</td>
                 <td>:</td>
-                <td><input type="text" id="cons"></td>
+                <td><input onkeyup="ecUpdate(this.value)" type="number" id="cons"></td>
                 <td></td>
             </tr>
 
             <tr>
                 <td>Fixed Charge</td>
                 <td>:</td>
-                <td><input type="text" id="fix"></td>
+                <td><input type="number" id="fix"></td>
                 <td></td>
             </tr>
             <tr>
                 <td>Energy Charge</td>
                 <td>:</td>
-                <td><input type="text" id="EC"></td>
+                <td><input type="number" id="EC"></td>
                 <td></td>
             </tr>
             <tr>
                 <td>Meter Rent</td>
                 <td>:</td>
-                <td><input type="text" id="mRent"></td>
+                <td><input type="number" id="mRent"></td>
                 <td></td>
             </tr>
             <tr>
                 <td>Duty</td>
                 <td>:</td>
-                <td><input type="text" id="duty"></td>
+                <td><input type="number" id="duty"></td>
                 <td></td>
             </tr>
             <tr>
                 <td>Fuel Surcharge</td>
                 <td>:</td>
-                <td><input type="text" id="fuel"></td>
+                <td><input type="number" id="fuel" value="0"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Govt Subsidy</td>
+                <td>:</td>
+                <td><input type="number" id="subsidy" value="0"></td>
                 <td></td>
             </tr>
             <tr>
@@ -64,8 +70,11 @@
             <tr>
                 <td>Bill Payable</td>
                 <td>:</td>
-                <td><input disabled type="text" id="amount"></td>
+                <td><input disabled type="number" id="amount"></td>
                 <td></td>
+            </tr>
+            <tr>
+                <td><input type="reset" value="Reset"></td>
             </tr>
         </table>
     </form>
@@ -77,18 +86,68 @@
         const b = 370;
         const c = 480;
         const d = 640;
+        const e = 760;
+        var ec = 0;
+        var fix = 0;
 
         function calculate() {
-            // e.preventDefault();
+            fix = document.getElementById('fix').value;
+            console.log('fix ', fix);
+            // ec = parseFloat(document.getElementById('EC').value);
+            // console.log('ec ', EC);
+            mRent = parseFloat(document.getElementById('mRent').value);
+            console.log('mRent ', mRent);
+            duty = parseFloat(document.getElementById('duty').value);
+            console.log('duty ', duty);
+            fuel = parseFloat(document.getElementById('fuel').value);
+            console.log('fuel ', fuel);
+            subsidy = parseFloat(document.getElementById('subsidy').value);
+            console.log('subsidy ', subsidy);
+
             units = document.getElementById('cons').value;
+
+
+            ecUpdate(units);
+
+
+
+
+
+            amount = +fix + +ec + +mRent + +duty + +fuel + -subsidy;
+            document.getElementById('amount').value = amount;
+            console.log(amount);
+
+        }
+
+
+
+
+        //live updating unittttt in input field
+        function updateUnits() {
+            pRead = parseFloat(document.getElementById('pRead').value);
+            nRead = parseFloat(document.getElementById('nRead').value);
+            if (nRead > 0 && pRead > 0 && nRead > pRead) {
+                units = +nRead + -pRead;
+                document.getElementById('cons').value = units;
+                ecUpdate(units);
+            }
+        }
+
+        ///////updatinnnnng energy                       charge in input fiiiiield
+        function ecUpdate(units) {
+            console.log(units);
+            
             rem = units % 100;
             firstDigit = Math.floor(units / 100);
-
-            if (units < 500) {
+            if (units < 501) {
                 if (firstDigit == 0) {
+                    console.log('before', ec);
+
                     ec = rem * 3.15;
-                    energy = document.getElementById('EC').value = document.getElementById('EC').value + ec;
-                    console.log(energy);
+                    console.log('afttttttttter', ec);
+
+                    document.getElementById('EC').value = ec;
+                    console.log(ec);
                 }
                 else if (firstDigit == 1) {
                     ec = a + (rem * 3.7);
@@ -111,33 +170,41 @@
                     energy = document.getElementById('EC').value = document.getElementById('EC').value + ec;
                     console.log(energy);
                 }
+                else if (firstDigit == 5) {
+                    ec = a + b + c + d + e
+                    energy = document.getElementById('EC').value = document.getElementById('EC').value + ec;
+                    console.log(energy);
+                }
             }
+            if (units > 500) {
+                if (units > 500 && units < 601) {
+                    ec = units * 5.8;
+                    energy = document.getElementById('EC').value = document.getElementById('EC').value + ec;
+                    console.log(energy);
+                }
+                else if (units > 600 && units < 701) {
+                    ec = units * 6.6;
+                    energy = document.getElementById('EC').value = document.getElementById('EC').value + ec;
+                    console.log(energy);
 
-            fix = document.getElementById('fix').value;
-            console.log('fix ', fix);
-
-            EC = parseFloat(document.getElementById('EC').value);
-            console.log('ec ', EC);
-            mRent = parseFloat(document.getElementById('mRent').value);
-            console.log('mRent ', mRent);
-            duty = parseFloat(document.getElementById('duty').value);
-            console.log('duty ', duty);
-            fuel = parseFloat(document.getElementById('fuel').value);
-            console.log('fuel ', fuel);
-
-            amount = +fix + +EC + +mRent + +duty + +fuel;
-            document.getElementById('amount').value = amount;
-            console.log(amount);
-
-
-
-
-
-
+                }
+                else if (units > 700 && units < 801) {
+                    ec = units * 6.9;
+                    energy = document.getElementById('EC').value = document.getElementById('EC').value + ec;
+                    console.log(energy);
+                }
+                else if (units > 800 && units < 1001) {
+                    ec = units * 7.1;
+                    energy = document.getElementById('EC').value = document.getElementById('EC').value + ec;
+                    console.log(energy);
+                }
+                else if (units > 1000) {
+                    ec = units * 7.9;
+                    energy = document.getElementById('EC').value = document.getElementById('EC').value + ec;
+                    console.log(energy);
+                }
+            }
         }
-
-
-
     </script>
 </body>
 

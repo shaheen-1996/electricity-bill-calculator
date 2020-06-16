@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <form action="">
+        <table>
+            <tr>
+                <td>Previous Reading</td>
+                <td>:</td>
+                <td><input type="text" id="pRead"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>New Reading</td>
+                <td>:</td>
+                <td><input type="text" id="nRead"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Units</td>
+                <td>:</td>
+                <td><input type="text" id="cons"></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>Fixed Charge</td>
+                <td>:</td>
+                <td><input type="text" id="fix"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Energy Charge</td>
+                <td>:</td>
+                <td><input type="text" id="EC"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Meter Rent</td>
+                <td>:</td>
+                <td><input type="text" id="mRent"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Duty</td>
+                <td>:</td>
+                <td><input type="text" id="duty"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Fuel Surcharge</td>
+                <td>:</td>
+                <td><input type="text" id="fuel"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><a id="submit" onclick="calculate()">Submit</a></td>
+            </tr>
+            <tr>
+                <td>Bill Payable</td>
+                <td>:</td>
+                <td><input disabled type="text" id="amount"></td>
+                <td></td>
+            </tr>
+        </table>
+    </form>
+</head>
+
+<body>
+    <script>
+        const a = 315;
+        const b = 370;
+        const c = 480;
+        const d = 640;
+
+        function calculate() {
+            // e.preventDefault();
+            units = document.getElementById('cons').value;
+            rem = units % 100;
+            firstDigit = Math.floor(units / 100);
+
+            if (units < 500) {
+                if (firstDigit == 0) {
+                    ec = rem * 3.15;
+                    energy = document.getElementById('EC').value = document.getElementById('EC').value + ec;
+                    console.log(energy);
+                }
+                else if (firstDigit == 1) {
+                    ec = a + (rem * 3.7);
+                    energy = document.getElementById('EC').value = document.getElementById('EC').value + ec;
+                    console.log(energy);
+
+                }
+                else if (firstDigit == 2) {
+                    ec = a + b + (rem * 4.8)
+                    energy = document.getElementById('EC').value = document.getElementById('EC').value + ec;
+                    console.log(energy);
+                }
+                else if (firstDigit == 3) {
+                    ec = a + b + c + (rem * 6.4)
+                    energy = document.getElementById('EC').value = document.getElementById('EC').value + ec;
+                    console.log(energy);
+                }
+                else if (firstDigit == 4) {
+                    ec = a + b + c + d + (rem * 7.6)
+                    energy = document.getElementById('EC').value = document.getElementById('EC').value + ec;
+                    console.log(energy);
+                }
+            }
+
+            fix = document.getElementById('fix').value;
+            console.log('fix ', fix);
+
+            EC = parseFloat(document.getElementById('EC').value);
+            console.log('ec ', EC);
+            mRent = parseFloat(document.getElementById('mRent').value);
+            console.log('mRent ', mRent);
+            duty = parseFloat(document.getElementById('duty').value);
+            console.log('duty ', duty);
+            fuel = parseFloat(document.getElementById('fuel').value);
+            console.log('fuel ', fuel);
+
+            amount = +fix + +EC + +mRent + +duty + +fuel;
+            document.getElementById('amount').value = amount;
+            console.log(amount);
+
+
+
+
+
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>

@@ -6,78 +6,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <div class="container">
+        <div class="div1">
+            <form action="">
+                <table>
+                    <tr>
+                        <td>Current Reading</td>
+                        <td>:</td>
+                        <td><input onkeyup="updateUnits()" type="number" id="nRead"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Previous Reading</td>
+                        <td>:</td>
+                        <td><input onkeyup="updateUnits()" type="number" id="pRead"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Consumption</td>
+                        <td>:</td>
+                        <td><input onkeyup="ecUpdate(this.value)" type="number" id="cons"></td>
+                        <td></td>
+                    </tr>
 
-    <form action="">
-        <table>
-            <tr>
-                <td>Previous Reading</td>
-                <td>:</td>
-                <td><input onkeyup="updateUnits()" type="number" id="pRead"></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Current Reading</td>
-                <td>:</td>
-                <td><input onkeyup="updateUnits()" type="number" id="nRead"></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Consumption</td>
-                <td>:</td>
-                <td><input onkeyup="ecUpdate(this.value)" type="number" id="cons"></td>
-                <td></td>
-            </tr>
+                    <tr>
+                        <td>Fixed Charges</td>
+                        <td>:</td>
+                        <td><input type="number" id="fix"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Meter Rent</td>
+                        <td>:</td>
+                        <td><input type="number" id="mRent"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Energy Charges</td>
+                        <td>:</td>
+                        <td><input type="number" id="EC"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Duty</td>
+                        <td>:</td>
+                        <td><input type="number" id="duty"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Fuel Surcharge</td>
+                        <td>:</td>
+                        <td><input type="number" id="fuel" value="0"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Govt Subsidy</td>
+                        <td>:</td>
+                        <td><input type="number" id="subsidy" value="0"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><a id="submit" onclick="calculate()">Submit</a></td>
+                    </tr>
+                    <tr>
+                        <td>Bill Payable</td>
+                        <td>:</td>
+                        <td><input disabled type="number" id="amount"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><input type="reset" value="Reset"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="div2">
+            <img src="billNew.jpg" width="340px">
 
-            <tr>
-                <td>Fixed Charges</td>
-                <td>:</td>
-                <td><input type="number" id="fix"></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Energy Charges</td>
-                <td>:</td>
-                <td><input type="number" id="EC"></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Meter Rent</td>
-                <td>:</td>
-                <td><input type="number" id="mRent"></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Duty</td>
-                <td>:</td>
-                <td><input type="number" id="duty"></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Fuel Surcharge</td>
-                <td>:</td>
-                <td><input type="number" id="fuel" value="0"></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Govt Subsidy</td>
-                <td>:</td>
-                <td><input type="number" id="subsidy" value="0"></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td><a id="submit" onclick="calculate()">Submit</a></td>
-            </tr>
-            <tr>
-                <td>Bill Payable</td>
-                <td>:</td>
-                <td><input disabled type="number" id="amount"></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td><input type="reset" value="Reset"></td>
-            </tr>
-        </table>
-    </form>
+        </div>
+    </div>
 </head>
 
 <body>
@@ -135,7 +143,7 @@
         ///////updatinnnnng energy                   charge in input fiiiiield
         function ecUpdate(units) {
             console.log(units);
-            
+
             rem = units % 100;
             firstDigit = Math.floor(units / 100);
             if (units < 501) {

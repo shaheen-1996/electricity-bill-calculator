@@ -16,26 +16,26 @@
                 <td></td>
             </tr>
             <tr>
-                <td>New Reading</td>
+                <td>Current Reading</td>
                 <td>:</td>
                 <td><input onkeyup="updateUnits()" type="number" id="nRead"></td>
                 <td></td>
             </tr>
             <tr>
-                <td>Units</td>
+                <td>Consumption</td>
                 <td>:</td>
                 <td><input onkeyup="ecUpdate(this.value)" type="number" id="cons"></td>
                 <td></td>
             </tr>
 
             <tr>
-                <td>Fixed Charge</td>
+                <td>Fixed Charges</td>
                 <td>:</td>
                 <td><input type="number" id="fix"></td>
                 <td></td>
             </tr>
             <tr>
-                <td>Energy Charge</td>
+                <td>Energy Charges</td>
                 <td>:</td>
                 <td><input type="number" id="EC"></td>
                 <td></td>
@@ -88,7 +88,6 @@
         const d = 640;
         const e = 760;
         var ec = 0;
-        var fix = 0;
 
         function calculate() {
             fix = document.getElementById('fix').value;
@@ -148,61 +147,60 @@
                 }
                 else if (firstDigit == 1) {
                     ec = a + (rem * 3.7);
-                    energy = document.getElementById('EC').value = document.getElementById('EC').value + ec;
-                    console.log(energy);
+                    document.getElementById('EC').value = ec;
+                    console.log(ec);
 
                 }
                 else if (firstDigit == 2) {
                     ec = a + b + (rem * 4.8)
-                    energy = document.getElementById('EC').value = document.getElementById('EC').value + ec;
-                    console.log(energy);
+                    document.getElementById('EC').value = ec;
+                    console.log(ec);
                 }
                 else if (firstDigit == 3) {
                     ec = a + b + c + (rem * 6.4)
-                    energy = document.getElementById('EC').value = document.getElementById('EC').value + ec;
-                    console.log(energy);
+                    document.getElementById('EC').value = ec;
+                    console.log(ec);
                 }
                 else if (firstDigit == 4) {
                     ec = a + b + c + d + (rem * 7.6)
-                    energy = document.getElementById('EC').value = document.getElementById('EC').value + ec;
-                    console.log(energy);
+                    document.getElementById('EC').value = ec;
+                    console.log(ec);
                 }
                 else if (firstDigit == 5) {
                     ec = a + b + c + d + e
-                    energy = document.getElementById('EC').value = document.getElementById('EC').value + ec;
-                    console.log(energy);
+                    document.getElementById('EC').value = ec;
+                    console.log(ec);
                 }
             }
             if (units > 500) {
                 if (units > 500 && units < 601) {
                     ec = units * 5.8;
-                    energy = document.getElementById('EC').value = document.getElementById('EC').value + ec;
-                    console.log(energy);
+                    document.getElementById('EC').value = ec;
+                    console.log(ec);
                 }
                 else if (units > 600 && units < 701) {
                     ec = units * 6.6;
-                    energy = document.getElementById('EC').value = document.getElementById('EC').value + ec;
-                    console.log(energy);
+                    document.getElementById('EC').value = ec;
+                    console.log(ec);
 
                 }
                 else if (units > 700 && units < 801) {
                     ec = units * 6.9;
-                    energy = document.getElementById('EC').value = document.getElementById('EC').value + ec;
-                    console.log(energy);
+                    document.getElementById('EC').value = ec;
+                    console.log(ec);
                 }
                 else if (units > 800 && units < 1001) {
                     ec = units * 7.1;
-                    energy = document.getElementById('EC').value = document.getElementById('EC').value + ec;
-                    console.log(energy);
+                    document.getElementById('EC').value = ec;
+                    console.log(ec);
                 }
                 else if (units > 1000) {
                     ec = units * 7.9;
-                    energy = document.getElementById('EC').value = document.getElementById('EC').value + ec;
-                    console.log(energy);
+                    document.getElementById('EC').value = ec;
+                    console.log(ec);
                 }
             }
         }
-    </script>
-</body>
+    </script
 
 </html>

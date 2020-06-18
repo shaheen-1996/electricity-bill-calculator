@@ -24,14 +24,16 @@
         </div>
         <div class="row" id="inputRow">
             <div class="col-12 pt-3">
+                <p class="text-muted">മീറ്റർ റീഡിങ് നോക്കി ബിൽ തുക കണ്ടെത്താൻ മീറ്ററിൽ നിന്ന് പുതിയ റീഡിങ്ങും , തൊട്ട് മുമ്പത്തെ ബിലിലെ
+                    റീഡിങ്ങും ഒന്നും രണ്ടും കോളങ്ങളിൽ പൂരിപ്പിക്കുക .</p>
                 <form>
                     <div class="form-group">
                         <label for="nRead">Current Reading(Curr)</label>
-                        <input id="nRead" onkeyup="updateUnits()" type="number" class="form-control" >
+                        <input id="nRead" onkeyup="updateUnits()" type="number" class="form-control">
                         <!-- <small id="nReadError" class="form-text ">Please fill</small> -->
                     </div>
                     <div class="form-group">
-                        <label  for="pRead">Previous Reading(Prev)</label>
+                        <label for="pRead">Previous Reading(Prev)</label>
                         <input id="pRead" onkeyup="updateUnits()" type="number" class="form-control">
                         <!-- <small id="nReadError" class="form-text ">Please fill</small> -->
                     </div>
@@ -41,37 +43,37 @@
                         <!-- <small id="nReadError" class="form-text ">Please fill</small> -->
                     </div>
                     <div class="form-group">
-                        <label  for="fix">Fixed Charges</label>
+                        <label for="fix">Fixed Charges</label>
                         <input id="fix" type="number" class="form-control">
                         <!-- <small id="nReadError" class="form-text ">Please fill</small> -->
                     </div>
                     <div class="form-group">
-                        <label  for="mRent">Meter Rent</label>
+                        <label for="mRent">Meter Rent</label>
                         <input id="mRent" type="number" class="form-control">
                         <!-- <small id="nReadError" class="form-text ">Please fill</small> -->
                     </div>
                     <div class="form-group">
-                        <label  for="EC">Energy Charges</label>
+                        <label for="EC">Energy Charges</label>
                         <input id="EC" type="number" class="form-control" step="0.01">
                         <!-- <small id="nReadError" class="form-text ">Please fill</small> -->
                     </div>
                     <div class="form-group">
-                        <label  for="duty">Duty</label>
+                        <label for="duty">Duty</label>
                         <input id="duty" type="number" class="form-control">
                         <!-- <small id="nReadError" class="form-text ">Please fill</small> -->
                     </div>
                     <div class="form-group">
-                        <label  for="fuel">Fuel Subcharges</label>
+                        <label for="fuel">Fuel Subcharges</label>
                         <input id="fuel" type="number" class="form-control">
                         <!-- <small id="nReadError" class="form-text ">Please fill</small> -->
                     </div>
                     <div class="form-group">
-                        <label  for="subsidy">Govt Subsidy</label>
+                        <label for="subsidy">Govt Subsidy</label>
                         <input id="subsidy" type="number" class="form-control">
                         <!-- <small id="nReadError" class="form-text ">Please fill</small> -->
                     </div>
 
-                    <button type="button" onclick="calculate(e)" class="btn btn-primary d-block m-auto">Submit</button>
+                    <button type="button" onclick="calculate(e)" class="btn btn-primary d-block mx-auto mt-4">Submit</button>
 
                     <!-- <div class="form-group">
                         <label  for="amount">Payable</label>
@@ -104,7 +106,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
-    <script src="./script.js"></script> 
+    <script src="./script.js"></script>
 </body>
 
 </html>

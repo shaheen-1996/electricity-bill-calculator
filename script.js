@@ -5,38 +5,38 @@ const d = 640;
 const e = 760;
 var ec = 0;
 
-function calculate() {
+function calculate(e) {
+    //e.preventDefault();
     fix = document.getElementById('fix').value;
+    fix = fix>0 ? fix:0;
     console.log('fix ', fix);
     // ec = parseFloat(document.getElementById('EC').value);
     // console.log('ec ', EC);
     mRent = parseFloat(document.getElementById('mRent').value);
+    mRent = mRent>0 ? mRent:0;
     console.log('mRent ', mRent);
     duty = parseFloat(document.getElementById('duty').value);
+    duty = duty>0 ? duty:0;
     console.log('duty ', duty);
     fuel = parseFloat(document.getElementById('fuel').value);
+    fuel = fuel>0 ? fuel:0;
     console.log('fuel ', fuel);
     subsidy = parseFloat(document.getElementById('subsidy').value);
+    subsidy = subsidy>0 ? subsidy:0;
     console.log('subsidy ', subsidy);
 
     units = document.getElementById('cons').value;
 
-
     ecUpdate(units);
 
-
-
-
-
+    document.getElementById('EC').value = parseFloat(ec)
     amount = +fix + +ec + +mRent + +duty + +fuel + -subsidy;
-    document.getElementById('amount').value = amount;
-    console.log(amount);
+    // document.getElementById('amount').value = amount;
+    // console.log(amount);
+
+    document.getElementById("amountDisplay").innerHTML = amount;
 
 }
-
-
-
-
 //live updating unittttt in input field
 function updateUnits() {
     pRead = parseFloat(document.getElementById('pRead').value);
